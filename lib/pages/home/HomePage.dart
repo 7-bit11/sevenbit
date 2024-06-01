@@ -1,16 +1,11 @@
-import 'package:bit_seven/model/home/atlasModel.dart';
-import 'package:bit_seven/model/home/everydayModel.dart';
-import 'package:bit_seven/pages/bit/bithomePage.dart';
-import 'package:bit_seven/pages/home/childern/NewsPage.dart';
-import 'package:bit_seven/pages/home/childern/atlasPage.dart';
-import 'package:bit_seven/pages/home/childern/everydayPage.dart';
-import 'package:bit_seven/utils/servicebit.dart';
+import 'package:sevenbit/model/home/atlasModel.dart';
+import 'package:sevenbit/model/home/everydayModel.dart';
+import 'package:sevenbit/pages/bit/bithomePage.dart';
+import 'package:sevenbit/pages/home/childern/NewsPage.dart';
+import 'package:sevenbit/pages/home/childern/atlasPage.dart';
+import 'package:sevenbit/pages/home/childern/everydayPage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 
-import '../../utils/service_result.dart';
 import '../../widget/indicator.dart';
 
 class HomePage extends StatefulWidget {

@@ -1,12 +1,8 @@
-import 'dart:ui';
-
-import 'package:bit_seven/pages/search/searchPage.dart';
-import 'package:bit_seven/pages/user/userDetails.dart';
+import 'package:sevenbit/pages/search/searchPage.dart';
+import 'package:sevenbit/pages/user/userDetails.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flukit/flukit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -261,7 +257,7 @@ Widget getItemX(CircleModel data, Function() ontap) {
           children: [
             GestureDetector(
               onTap: () {
-                Get.to(UserDetailsPage(data.videoImg));
+                Get.to(UserDetailsPage(data.videoImg, data.videoTime, ""));
               },
               child: Hero(
                 tag: data.videoImg,
@@ -404,7 +400,7 @@ Future showRightMenu(BuildContext context, dx, dy,
               BorderSide(color: Color.fromARGB(205, 29, 80, 255), width: 2));
 //如果传了items参数则根据items生成菜单
   if (items != null && items.length > 0) {
-    double itemWidth = 80.0;
+    double itemWidth = 100.0;
     double itemHeight = 50.0;
     double menuHeight = itemHeight * items.length + 2;
 
@@ -416,15 +412,18 @@ Future showRightMenu(BuildContext context, dx, dy,
         children: items
             .map((e) => InkWell(
                   child: Container(
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     width: itemWidth,
                     height: itemHeight,
                     child: Text(
                       e.key,
-                      style: TextStyle(fontSize: 16),
+                      style: const TextStyle(fontSize: 16),
                     ),
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    Get.back();
+                    print(e.value);
+                  },
                 ))
             .toList(),
       ),

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 
 import '../../model/personal_messageModel.dart';
 
@@ -23,14 +20,14 @@ class _NearbyPageState extends State<NearbyPage> {
       body: Container(
           height: double.infinity,
           width: double.infinity,
-          padding: EdgeInsets.symmetric(horizontal: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 15),
           //color: Color.fromARGB(255, 29, 80, 255),
           child: ListView(
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             padding: EdgeInsets.zero,
             shrinkWrap: true,
             children: [
-              SizedBox(height: 50),
+              const SizedBox(height: 50),
               Container(
                 height: 34,
                 alignment: Alignment.center,

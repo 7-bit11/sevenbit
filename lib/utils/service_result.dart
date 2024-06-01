@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:get/get_connect/http/src/utils/utils.dart';
 
 class ServiceTokenHead {

@@ -1,13 +1,7 @@
-import 'dart:async';
-import 'dart:ui';
-
-import 'package:bit_seven/model/bit/bitItemModel.dart';
+import 'package:sevenbit/model/bit/bitItemModel.dart';
 import 'package:flukit/flukit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 
 import '../../model/home/newsModel.dart';
 

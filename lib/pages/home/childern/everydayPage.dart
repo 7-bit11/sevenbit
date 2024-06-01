@@ -1,11 +1,6 @@
-import 'dart:ui';
-
-import 'package:bit_seven/widget/home/everydayWidget.dart';
-import 'package:bit_seven/widget/home/homeWidget.dart';
+import 'package:sevenbit/widget/home/everydayWidget.dart';
+import 'package:sevenbit/widget/home/homeWidget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../model/home/everydayModel.dart';
 

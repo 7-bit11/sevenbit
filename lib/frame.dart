@@ -1,14 +1,10 @@
-import 'dart:math';
-
-import 'package:bit_seven/pages/bit/bithomePage.dart';
-import 'package:bit_seven/pages/circle/circlePage.dart';
-import 'package:bit_seven/pages/home/HomePage.dart';
-import 'package:bit_seven/pages/nearby/nearbyPage.dart';
-import 'package:bit_seven/pages/personal/PersonalPage.dart';
-import 'package:bit_seven/utils/android_call.dart';
+import 'package:animations/animations.dart';
+import 'package:sevenbit/pages/circle/circlePage.dart';
+import 'package:sevenbit/pages/home/HomePage.dart';
+import 'package:sevenbit/pages/nearby/nearbyPage.dart';
+import 'package:sevenbit/pages/personal/PersonalPage.dart';
+import 'package:sevenbit/utils/android_call.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'model/personal_messageModel.dart';
@@ -29,12 +25,15 @@ class _FramePageState extends State<FramePage>
     // TODO: implement initState
     super.initState();
     _msgList = [
-      MessageModel("assets/images/my.jpg", "明日香", "今日香，明日臭", "20小时前"),
-      MessageModel("assets/images/lbl.jpg", "凌波丽",
+      MessageModel("", "", "assets/images/my.jpg", "明日香", "今日香，明日臭", "20小时前"),
+      MessageModel("", "", "assets/images/lbl.jpg", "凌波丽",
           "绫波丽，日本动画系列作品《新世纪福音战士》及漫画版中的女主角", "20小时前"),
-      MessageModel("assets/images/zs.jpg", "碇真嗣", "性格内向，不擅长与人交流", "20小时前"),
-      MessageModel("assets/images/yt.jpg", "于涛", "九转大肠，我保留了一部分的味道！", "20小时前"),
-      MessageModel("assets/images/ls.jpg", "评委老师", "不管你做的什么，我都爱吃", "20小时前")
+      MessageModel(
+          "", "", "assets/images/zs.jpg", "碇真嗣", "性格内向，不擅长与人交流", "20小时前"),
+      MessageModel(
+          "", "", "assets/images/yt.jpg", "于涛", "九转大肠，我保留了一部分的味道！", "20小时前"),
+      MessageModel(
+          "", "", "assets/images/ls.jpg", "评委老师", "不管你做的什么，我都爱吃", "20小时前")
     ];
     itemPage = [HomePage(), CirclePage(), NearbyPage(_msgList), PersonalPage()];
   }
@@ -84,7 +83,20 @@ class _FramePageState extends State<FramePage>
         return false;
       },
       child: Scaffold(
-          body: itemPage[_indexPage],
+          body: PageTransitionSwitcher(
+              transitionBuilder: (
+                Widget child,
+                Animation<double> animation,
+                Animation<double> secondaryAnimation,
+              ) {
+                return SharedAxisTransition(
+                  animation: animation,
+                  secondaryAnimation: secondaryAnimation,
+                  transitionType: SharedAxisTransitionType.horizontal,
+                  child: child,
+                );
+              },
+              child: itemPage[_indexPage]),
           bottomNavigationBar: BottomNavigationBar(
             showSelectedLabels: false,
             showUnselectedLabels: false,

@@ -32,15 +32,20 @@ class LoginPageContorller extends GetxController {
     if (!loginb.value) {
       EasyLoading.show(status: "登录中");
       loginb.value = true;
-      Future.delayed(const Duration(seconds: 1), () async {
+      await Future.delayed(const Duration(seconds: 1), () async {
         if (userName.text != "") {
           ServiceResultData loginResult =
               await Service.loginU(userName.text, password.text);
           if (loginResult.success) {
-            EasyLoading.showToast('登录成功',
-                duration: const Duration(milliseconds: 1500));
-            Get.offAll(() => const FramePage(),
-                transition: Transition.downToUp);
+            if (loginResult.code == 408) {
+              EasyLoading.showToast('网络请求超时..',
+                  duration: const Duration(milliseconds: 1500));
+            } else {
+              EasyLoading.showToast('登录成功',
+                  duration: const Duration(milliseconds: 1500));
+              Get.offAll(() => const FramePage(),
+                  transition: Transition.downToUp);
+            }
           } else {
             EasyLoading.showToast('用户名/密码错误',
                 duration: const Duration(milliseconds: 1500));

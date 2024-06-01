@@ -1,9 +1,7 @@
-import 'package:bit_seven/model/home/atlasModel.dart';
-import 'package:bit_seven/widget/home/atlasWidget.dart';
-import 'package:bit_seven/widget/home/homeWidget.dart';
+import 'package:sevenbit/model/home/atlasModel.dart';
+import 'package:sevenbit/widget/home/atlasWidget.dart';
+import 'package:sevenbit/widget/home/homeWidget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class AtlasPage extends StatefulWidget {

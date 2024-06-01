@@ -1,5 +1,8 @@
 import 'dart:ui';
 
+import 'package:sevenbit/utils/netUrl.dart';
+import 'package:sevenbit/widget/image/ImageWidget.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -22,9 +25,9 @@ class CollectionWidget extends StatelessWidget {
           color: const Color.fromARGB(255, 250, 250, 250),
           boxShadow: const [
             BoxShadow(
-                color: Color.fromARGB(28, 158, 158, 158),
+                color: Color.fromARGB(80, 208, 208, 208),
                 blurRadius: 10,
-                offset: Offset(0, 10))
+                offset: Offset(0, 5))
           ],
         ),
         child: Column(
@@ -42,7 +45,7 @@ class CollectionWidget extends StatelessWidget {
                 )
               ],
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 3),
             Container(
               width: double.infinity,
               height: 100,
@@ -59,9 +62,8 @@ class CollectionWidget extends StatelessWidget {
                     child: Stack(
                       alignment: Alignment.center,
                       children: [
-                        Image.asset(
-                          data.tilteImgUrl,
-                          fit: BoxFit.cover,
+                        MyCachedNetworkImage(
+                          "${netUrl.bitnetUrl}getImg/${data.tilteImgUrl}",
                           width: 80,
                           height: 80,
                         ),

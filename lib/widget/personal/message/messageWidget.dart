@@ -1,9 +1,11 @@
-import 'package:bit_seven/model/personal_messageModel.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:sevenbit/model/personal_messageModel.dart';
+import 'package:sevenbit/utils/netUrl.dart';
+import 'package:sevenbit/widget/image/ImageWidget.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+
+import '../../../pages/user/userDetails.dart';
 
 class MessageWidget extends StatelessWidget {
   const MessageWidget(this.data, {super.key});
@@ -19,9 +21,25 @@ class MessageWidget extends StatelessWidget {
           children: [
             Row(
               children: [
-                ClipOval(
-                  child: Image.asset(data.imgurl,
-                      fit: BoxFit.cover, width: 40, height: 40),
+                GestureDetector(
+                  onTap: () {
+                    Get.to(
+                        UserDetailsPage(
+                            "${netUrl.bitnetUrl}getImg/${data.imgurl}",
+                            data.creTime,
+                            data.account),
+                        transition: Transition.rightToLeft);
+                  },
+                  child: Hero(
+                    tag:
+                        "${netUrl.bitnetUrl}getImg/${data.imgurl}${data.creTime}",
+                    child: ClipOval(
+                      child: MyCachedNetworkImage(
+                          "${netUrl.bitnetUrl}getImg/${data.imgurl}",
+                          width: 40,
+                          height: 40),
+                    ),
+                  ),
                 ),
                 const SizedBox(width: 10),
                 Column(
@@ -47,10 +65,6 @@ class MessageWidget extends StatelessWidget {
                 )
               ],
             ),
-            // SvgPicture.asset(
-            //   "assets/svg/dots-horizontal.svg",
-            //   color: Colors.grey,
-            // )
           ],
         ),
         const SizedBox(height: 13)

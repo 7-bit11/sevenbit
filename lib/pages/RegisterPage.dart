@@ -1,14 +1,9 @@
-import 'package:bit_seven/pages/LoginPage.dart';
-import 'package:bit_seven/utils/overall_situation.dart';
+import 'package:sevenbit/pages/LoginPage.dart';
+import 'package:sevenbit/utils/overall_situation.dart';
 import 'package:flukit/flukit.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-
-import '../frame.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});

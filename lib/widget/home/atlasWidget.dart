@@ -1,9 +1,5 @@
-import 'dart:ui';
-
-import 'package:bit_seven/model/home/atlasModel.dart';
+import 'package:sevenbit/model/home/atlasModel.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class AtlasWidget extends StatefulWidget {
   const AtlasWidget(this._atlasModel, {super.key});

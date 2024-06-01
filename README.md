@@ -1,4 +1,4 @@
-# bit_seven
+# sevenbit
 
 A new Flutter project.
 

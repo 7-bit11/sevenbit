@@ -1,9 +1,6 @@
-import 'dart:ui';
-
-import 'package:flutter/cupertino.dart';
+import 'package:sevenbit/pages/personal/details/detailsPageController.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:get/get.dart';
 
 class DetailsWidget extends StatefulWidget {
   const DetailsWidget(this.myWidget, this.title, this.indo, {super.key});
@@ -17,6 +14,7 @@ class DetailsWidget extends StatefulWidget {
 class _DetailsWidgetState extends State<DetailsWidget> {
   @override
   Widget build(BuildContext context) {
+    // final DetailsPageController detailsPageController = Get.find();
     return GestureDetector(
       onTap: widget.indo,
       child: Padding(

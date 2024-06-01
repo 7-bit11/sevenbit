@@ -1,9 +1,8 @@
-import 'package:bit_seven/pages/LoginPageController.dart';
+import 'package:sevenbit/pages/LoginPageController.dart';
 import 'package:flukit/flukit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:bit_seven/pages/RegisterPage.dart';
 
 import '../utils/overall_situation.dart';
 
@@ -95,6 +94,32 @@ class LoginPage extends GetView<LoginPageContorller> {
       ),
     );
   }
+
+  Widget getMyButtonWidget(Function()? on, String buttonStr, int mtype) {
+    return Container(
+      height: 48,
+      width: double.infinity,
+      decoration: const BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(113))),
+      child: GradientButton(
+          colors: mtype == 1 && on != null
+              ? OverallSituation.typea
+              : OverallSituation.typeb,
+          onPressed: mtype == 1 && !controller.part.value
+              ? () {
+                  EasyLoading.showToast('登录需同意隐私政策',
+                      duration: const Duration(milliseconds: 1500));
+                }
+              : on,
+          borderRadius: const BorderRadius.all(Radius.circular(113)),
+          child: Text(
+            buttonStr,
+            style: TextStyle(
+                fontSize: 25,
+                color: mtype == 1 && on != null ? Colors.white : Colors.grey),
+          )),
+    );
+  }
 }
 
 Widget getMyTextFieldX(String title, String textFieldStr,
@@ -122,31 +147,5 @@ Widget getMyTextFieldX(String title, String textFieldStr,
             )),
       )
     ],
-  );
-}
-
-Widget getMyButtonWidget(Function()? on, String buttonStr, int mtype) {
-  return Container(
-    height: 48,
-    width: double.infinity,
-    decoration: const BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(113))),
-    child: GradientButton(
-        colors: mtype == 1 && on != null
-            ? OverallSituation.typea
-            : OverallSituation.typeb,
-        onPressed: mtype == 1 && on != null
-            ? on
-            : () {
-                EasyLoading.showToast('登录需同意隐私政策',
-                    duration: const Duration(milliseconds: 1500));
-              },
-        borderRadius: const BorderRadius.all(Radius.circular(113)),
-        child: Text(
-          buttonStr,
-          style: TextStyle(
-              fontSize: 25,
-              color: mtype == 1 && on != null ? Colors.white : Colors.grey),
-        )),
   );
 }

@@ -1,11 +1,6 @@
 import 'package:flukit/flukit.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
-import 'package:get/get_navigation/src/routes/default_transitions.dart';
 
 import '../../../model/home/newsModel.dart';
 import '../../../widget/home/homeWidget.dart';

@@ -1,14 +1,10 @@
 import 'dart:io';
-import 'dart:typed_data';
 
 import 'package:extended_image/extended_image.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:image_editor/image_editor.dart';
-import 'package:path_provider/path_provider.dart';
 
 import '../../utils/overall_situation.dart';
 
@@ -35,7 +31,7 @@ class _CutImagePageState extends State<CutImagePage> {
               onPressed: () {
                 save(context);
               },
-              child: Text("确认", style: TextStyle(color: Colors.black)))
+              child: const Text("确认", style: TextStyle(color: Colors.black)))
         ],
       ),
       body: Container(

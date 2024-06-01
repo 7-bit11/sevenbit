@@ -1,6 +1,6 @@
 {
-    "name": "bit_seven",
-    "short_name": "bit_seven",
+    "name": "sevenbit",
+    "short_name": "sevenbit",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

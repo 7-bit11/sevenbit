@@ -1,30 +1,45 @@
-import 'package:bit_seven/widget/personal/dynamic/dynamicWidget.dart';
+// ignore_for_file: invalid_use_of_protected_member
+
+import 'package:sevenbit/pages/dynamic_detail_page.dart';
+import 'package:sevenbit/pages/personal/dynamic/dynamicPageController.dart';
+import 'package:sevenbit/utils/overall_situation.dart';
+import 'package:sevenbit/widget/noDataWidget.dart';
+import 'package:sevenbit/widget/personal/dynamic/dynamicWidget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
+import 'package:get/get.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
-import '../../../model/personal_dynamicModel.dart';
-
-class DynamicPage extends StatefulWidget {
-  const DynamicPage(this._dynamicModelList, {super.key});
-  final List<DynamicModel> _dynamicModelList;
-  @override
-  State<DynamicPage> createState() => _DynamicWidgetState();
-}
-
-class _DynamicWidgetState extends State<DynamicPage> {
+class DynamicPage extends GetView<DynamicPageController> {
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        itemCount: widget._dynamicModelList.length,
-        itemBuilder: (BuildContext context, int index) {
-          return DynamicWidget(widget._dynamicModelList[index]);
-        });
+    final size = MediaQuery.of(context).size;
+    Get.put(DynamicPageController());
+    return Obx(() => !controller.isinit.value
+        ? Container(
+            padding: EdgeInsets.symmetric(horizontal: size.width / 2 - 50),
+            width: 100,
+            height: 30,
+            child: LoadingAnimationWidget.staggeredDotsWave(
+                color: OverallSituation.typea[0], size: 40),
+          )
+        : controller.isdata.value
+            ? ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: controller.dynamicModelList.value.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return GestureDetector(
+                    onTap: () {
+                      Get.to(
+                          DynamicDetailPage(
+                              controller.dynamicModelList.value[index].id),
+                          transition: Transition.rightToLeft);
+                    },
+                    child:
+                        DynamicWidget(controller.dynamicModelList.value[index]),
+                  );
+                })
+            : getNoDataWidget(size.width / 2));
   }
 }
